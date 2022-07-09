@@ -1,0 +1,7 @@
+package ie.atu.sw;
+
+public class MenuItem {
+	public int Order;
+	public String Text;
+	public String Value;
+}
