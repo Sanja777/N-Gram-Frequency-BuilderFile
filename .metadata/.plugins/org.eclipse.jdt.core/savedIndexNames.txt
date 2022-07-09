@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\FAKS\OBJECT ORIENTED SOFTWARE DEVELOPMENT\An N-Gram Frequency BuilderFile\java\.metadata\.plugins\org.eclipse.jdt.core
+2482639962.index
+1865797976.index
+760091825.index
