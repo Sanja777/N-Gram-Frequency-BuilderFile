@@ -1,6 +1,5 @@
 package ie.atu.sw;
-
-import java.awt.MenuItem;
+import java.util.Scanner;
 
 public class Menu {
 	public ConsoleColour introColor;
@@ -13,6 +12,7 @@ public class Menu {
 	public Menu() {
 		introColor = ConsoleColour.WHITE;
 		menuTextColor = ConsoleColour.GREEN;
+		menuValueColor = ConsoleColour.PURPLE;
 	}
 	public void printIntro() {
 		System.out.println(ConsoleColour.WHITE);
@@ -24,28 +24,30 @@ public class Menu {
 		System.out.println("************************************************************");
 	}
 	
-	public int printMainMenu(ConsoleMenuItem[] menuItems) {
+	public ConsoleMenuOption printMainMenu(ConsoleMenuItem[] menuItems) {
+		ConsoleMenuOption result = ConsoleMenuOption.INVALID_ENTRY;
 		System.out.println(menuTextColor);
 		for(int i=0;i<menuItems.length;i++) {
 			ConsoleMenuItem menuItem = menuItems[i];
-			System.out.print("(" + menuItem.Order + ") " + menuItem.Text);
+			
 			if(menuItem.Value != null) {
-				System.out.println(menuValueColor);
-				System.out.print(" [" + menuItem.Value + " ]");
+				System.out.print("(" + menuItem.Order + ") " + menuItem.Text);
+				System.out.print(menuValueColor);
+				System.out.print(" [" + menuItem.Value + "]");
+				System.out.println(menuTextColor);
+			} else {
+				System.out.println("(" + menuItem.Order + ") " + menuItem.Text);
 			}
 		}
-		System.out.println("(1) Specify Text File Directory");
-		System.out.println("(2) Specify n-Gram Size");
-		System.out.println("(3) Specify Output File");
-		System.out.println("(4) Build n-Grams ");
-		System.out.println("(5) Quit");
-		
 		//Output a menu of options and solicit text from the user
 		System.out.print(ConsoleColour.BLACK_BOLD_BRIGHT);
-		System.out.print("Select Option [1-4]>");
+		System.out.println("Select Option [1-" + (menuItems.length) + "]>");
 		System.out.println();
-		//System.out.read
-		return 0;
+		
+		Scanner s = new Scanner(System.in);
+		String str = s.nextLine();
+		result = ConsoleMenuOption.fromInteger(str);
+		return result;
 	}
 
 }
